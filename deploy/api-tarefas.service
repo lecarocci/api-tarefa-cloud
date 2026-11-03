@@ -1,0 +1,14 @@
+[Unit]
+Description=API de Tarefas (FastAPI + SQLite)
+After=network.target
+
+[Service]
+User=azureuser
+WorkingDirectory=/opt/api-tarefas-cloud
+EnvironmentFile=/etc/api-tarefas.env
+ExecStart=/opt/api-tarefas-cloud/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
